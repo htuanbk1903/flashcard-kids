@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flashcard cho bé</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+      background: #fff7e6;
+    }
+    img {
+      width: 350px;
+      margin: 20px 0;
+    }
+    button {
+      font-size: 22px;
+      padding: 12px 25px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Flashcard Random 🎉</h1>
+
+  <img id="card" />
+
+  <br />
+  <button onclick="loadCard()">🎲 Thẻ ngẫu nhiên</button>
+
+  <script>
+    async function loadCard() {
+      const res = await fetch("/api/random");
+      const data = await res.json();
+      document.getElementById("card").src = data.image;
+    }
+
+    // load thẻ đầu tiên
+    loadCard();
+  </script>
+</body>
+</html>
